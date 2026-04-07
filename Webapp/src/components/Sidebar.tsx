@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import './Sidebar.css'
@@ -7,17 +6,14 @@ export default function Sidebar() {
   const navigate = useNavigate()
   const location = useLocation()
   const { user, logout } = useAuth()
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const handleLogout = () => {
     logout()
-    setIsMobileMenuOpen(false)
     navigate('/login')
   }
 
   const handleNavigate = (path: string) => {
     navigate(path)
-    setIsMobileMenuOpen(false)
   }
 
   const isActive = (path: string) => {
@@ -25,19 +21,12 @@ export default function Sidebar() {
   }
 
   return (
-    <nav className={`sidebar-navbar ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+    <nav className="sidebar-navbar">
       <div className="sidebar-container">
         {/* Logo/Branding */}
         <div className="sidebar-brand">
           <span className="brand-icon">📚</span>
           <span className="brand-text">StudyAI</span>
-          <button
-            type="button"
-            className="mobile-menu-toggle"
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-          >
-            Menu
-          </button>
         </div>
 
         {/* Navigation Links */}
