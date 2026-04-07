@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import './Sidebar.css'
@@ -6,10 +7,17 @@ export default function Sidebar() {
   const navigate = useNavigate()
   const location = useLocation()
   const { user, logout } = useAuth()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const handleLogout = () => {
     logout()
+    setIsMobileMenuOpen(false)
     navigate('/login')
+  }
+
+  const handleNavigate = (path: string) => {
+    navigate(path)
+    setIsMobileMenuOpen(false)
   }
 
   const isActive = (path: string) => {
@@ -17,18 +25,25 @@ export default function Sidebar() {
   }
 
   return (
-    <nav className="sidebar-navbar">
+    <nav className={`sidebar-navbar ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
       <div className="sidebar-container">
         {/* Logo/Branding */}
         <div className="sidebar-brand">
           <span className="brand-icon">📚</span>
           <span className="brand-text">StudyAI</span>
+          <button
+            type="button"
+            className="mobile-menu-toggle"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          >
+            Menu
+          </button>
         </div>
 
         {/* Navigation Links */}
         <div className="sidebar-nav">
           <button
-            onClick={() => navigate('/dashboard')}
+            onClick={() => handleNavigate('/dashboard')}
             className={`sidebar-link ${isActive('/dashboard') ? 'active' : ''}`}
           >
             <span className="nav-icon">📊</span>
@@ -36,7 +51,7 @@ export default function Sidebar() {
           </button>
 
           <button
-            onClick={() => navigate('/subjects')}
+            onClick={() => handleNavigate('/subjects')}
             className={`sidebar-link ${isActive('/subjects') ? 'active' : ''}`}
           >
             <span className="nav-icon">📚</span>
@@ -44,7 +59,7 @@ export default function Sidebar() {
           </button>
 
           <button
-            onClick={() => navigate('/quizzes')}
+            onClick={() => handleNavigate('/quizzes')}
             className={`sidebar-link ${isActive('/quizzes') ? 'active' : ''}`}
           >
             <span className="nav-icon">✏️</span>
@@ -52,7 +67,7 @@ export default function Sidebar() {
           </button>
 
           <button
-            onClick={() => navigate('/quiz-attempts')}
+            onClick={() => handleNavigate('/quiz-attempts')}
             className={`sidebar-link ${isActive('/quiz-attempts') ? 'active' : ''}`}
           >
             <span className="nav-icon">📋</span>
@@ -60,7 +75,7 @@ export default function Sidebar() {
           </button>
 
           <button
-            onClick={() => navigate('/performance')}
+            onClick={() => handleNavigate('/performance')}
             className={`sidebar-link ${isActive('/performance') ? 'active' : ''}`}
           >
             <span className="nav-icon">📈</span>

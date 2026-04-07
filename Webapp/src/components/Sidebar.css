@@ -220,6 +220,7 @@
 
 /* Main Content Area */
 /* Responsive: Mobile */
+/* Responsive: Mobile - transform sidebar into a dropdown menu */
 @media (max-width: 768px) {
     .sidebar-navbar {
         width: 100%;
@@ -228,66 +229,81 @@
     }
 
     .sidebar-container {
-        flex-direction: row;
+        flex-direction: column;
         height: auto;
     }
 
     .sidebar-brand {
-        padding: 16px 20px;
-        border-bottom: none;
-        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .sidebar-nav {
-        padding: 0;
-        flex: 1;
-        display: flex;
-        gap: 0;
+    .mobile-menu-toggle {
+        display: inline-flex;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        background-color: #ffffff;
+        color: #4f46e5;
+        border-radius: 999px;
+        border: none;
+    }
+
+    .sidebar-nav,
+    .sidebar-footer {
+        display: none;
+        padding: 8px 16px 16px;
+    }
+
+    .sidebar-navbar.mobile-open .sidebar-nav,
+    .sidebar-navbar.mobile-open .sidebar-footer {
+        display: block;
     }
 
     .sidebar-link {
-        flex: 1;
-        padding: 12px 16px;
-        text-align: center;
-        border-left: none;
-        border-bottom: 2px solid transparent;
+        justify-content: flex-start;
+        padding: 10px 0;
+        border: none;
+        text-align: left;
     }
 
-    .sidebar-link.active {
-        border-left: none;
-        border-bottom: 2px solid white;
-    }
-
+    /* On mobile, menu shows text only (no emojis/icons) */
     .nav-icon {
-        margin-right: 0;
+        display: none;
     }
 
     .nav-text {
-        display: none;
+        opacity: 1;
+        max-width: none;
+        margin-left: 0;
     }
 
-    .sidebar-footer {
-        padding: 12px 16px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        border-left: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
+    /* Show user info and logout in the dropdown */
     .user-info {
-        display: none;
+        display: flex;
+        opacity: 1;
+        max-height: none;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
     }
 
     .btn-logout {
-        padding: 6px 10px;
-        font-size: 12px;
+        opacity: 1;
+        max-height: none;
+        padding-top: 8px;
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
-    .sidebar-navbar {
-        width: 100%;
+    .sidebar-brand {
+        padding: 10px 12px;
     }
 
-    .sidebar-link {
-        padding: 10px 12px;
+    .sidebar-nav,
+    .sidebar-footer {
+        padding: 8px 12px 12px;
     }
 }
