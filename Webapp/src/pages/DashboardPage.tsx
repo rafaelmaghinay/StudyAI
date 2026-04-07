@@ -5,7 +5,7 @@ import Card from '../components/common/Card'
 import Button from '../components/common/Button'
 import QuizList from '../components/quiz/QuizList'
 import SubjectList from '../components/subject/SubjectList'
-import { Quiz, Subject, Note } from '../types'
+import { Quiz, Subject } from '../types'
 import { quizService } from '../services/quizService'
 import { subjectService } from '../services/subjectService'
 import { noteService } from '../services/noteService'
@@ -16,7 +16,6 @@ export default function DashboardPage() {
   const navigate = useNavigate()
   const [subjects, setSubjects] = useState<Subject[]>([])
   const [recentQuizzes, setRecentQuizzes] = useState<Quiz[]>([])
-  const [notes, setNotes] = useState<Note[]>([])
   const [stats, setStats] = useState({
     totalSubjects: 0,
     totalNotes: 0,
@@ -43,7 +42,6 @@ export default function DashboardPage() {
 
       setSubjects((subjectsData || []).slice(0, 3))
       setRecentQuizzes((quizzesData || []).slice(0, 6))
-      setNotes(notesData || [])
       setStats({
         totalSubjects: subjectsData?.length || 0,
         totalNotes: notesData?.length || 0,
