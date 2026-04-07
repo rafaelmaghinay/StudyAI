@@ -117,7 +117,7 @@ export default function CreateQuizPage() {
     }
     try {
       setLoading(true)
-      const quiz = await quizService.create(
+      await quizService.create(
         config.selectedNoteIds,
         {
           title: config.title,
