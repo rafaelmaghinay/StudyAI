@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
 import QuestionDisplay from '../components/quiz/QuestionDisplay'
 import Button from '../components/common/Button'
 import Card from '../components/common/Card'
@@ -11,7 +10,6 @@ import './QuizResultsPage.css'
 export default function QuizResultsPage() {
   const { quizId, attemptId } = useParams<{ quizId: string; attemptId: string }>()
   const navigate = useNavigate()
-  const { user } = useAuth()
   const [attempt, setAttempt] = useState<QuizAttempt | null>(null)
   const [answers, setAnswers] = useState<UserAnswer[]>([])
   const [questions, setQuestions] = useState<Question[]>([])

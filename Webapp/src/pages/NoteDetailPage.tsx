@@ -118,8 +118,9 @@ export default function NoteDetailPage() {
           <div>
             <strong>Size:</strong> {note.fileSizeKb || 0} KB
           </div>
+          {/* Pages count not available from backend; show N/A for now */}
           <div>
-            <strong>Pages:</strong> {note.pagesCount || 0}
+            <strong>Pages:</strong> N/A
           </div>
           <div>
             <strong>Added:</strong> {new Date(note.createdAt).toLocaleDateString()}

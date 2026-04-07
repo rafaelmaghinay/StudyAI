@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { quizService } from '../services/quizService'
-import { Quiz, Question, UserAnswer } from '../types'
+import { Quiz, UserAnswer } from '../types'
 import Button from '../components/common/Button'
 import Card from '../components/common/Card'
 import QuestionDisplay from '../components/quiz/QuestionDisplay'
@@ -18,7 +18,7 @@ export default function QuizPage() {
   const [answers, setAnswers] = useState<UserAnswer[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [timeStarted, setTimeStarted] = useState<Date>(new Date())
+  const [timeStarted, setTimeStarted] = useState<Date | null>(null)
   const [timerSeconds, setTimerSeconds] = useState(0)
   const [attemptId, setAttemptId] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -126,10 +126,10 @@ export default function QuizPage() {
     return `${hours > 0 ? hours + 'h ' : ''}${minutes}m ${secs}s`
   }
 
+  const totalQuestions = quiz?.questions?.length ?? 0
   const answeredCount = answers.length
-  const allAnswered = quiz && quiz.questions && answers.length === quiz.questions.length
-  const isLastQuestion =
-    quiz && quiz.questions && currentQuestionIndex === quiz.questions.length - 1
+  const allAnswered = totalQuestions > 0 && answeredCount === totalQuestions
+  const isLastQuestion = totalQuestions > 0 && currentQuestionIndex === totalQuestions - 1
 
   if (loading && !quiz) {
     return (
@@ -219,7 +219,7 @@ export default function QuizPage() {
           <Card>
             <div className="question-header">
               <h2>Question {currentQuestionIndex + 1}</h2>
-              <span className="question-type">({currentQuestion.type})</span>
+              <span className="question-type">({currentQuestion.questionType})</span>
             </div>
 
             <QuestionDisplay

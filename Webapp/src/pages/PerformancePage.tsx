@@ -20,7 +20,6 @@ import {
 import './PerformancePage.css'
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8']
-const PASS_COLORS = ['#22c55e', '#ef4444']
 
 export default function PerformancePage() {
   const { user } = useAuth()
