@@ -97,9 +97,9 @@ public class SecurityConfig implements WebMvcConfigurer {
 
         // Parse allowed origins from configuration property (comma-separated)
         List<String> origins = Arrays.stream(allowedOrigins.split(","))
-            .map(String::trim)
-            .filter(s -> !s.isEmpty())
-            .collect(Collectors.toList());
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .collect(Collectors.toList());
 
         configuration.setAllowedOrigins(origins);
         configuration.addAllowedMethod(CorsConfiguration.ALL);
