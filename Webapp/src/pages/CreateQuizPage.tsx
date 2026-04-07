@@ -128,7 +128,8 @@ export default function CreateQuizPage() {
         },
         user.id
       )
-      navigate(`/quiz/${quiz.id}/take`)
+      // After creating the quiz, go to the quizzes list page
+      navigate('/quizzes')
     } catch (error) {
       console.error('Failed to create quiz:', error)
       alert('Failed to create quiz')
