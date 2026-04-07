@@ -61,6 +61,26 @@
     font-size: 18px;
 }
 
+.brand-icon {
+    display: inline-flex;
+    font-size: 20px;
+}
+
+.brand-text {
+    margin-left: 0;
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.2s ease, max-width 0.2s ease, margin-left 0.2s ease;
+}
+
+.sidebar-navbar:hover .brand-text {
+    opacity: 1;
+    max-width: 120px;
+    margin-left: 8px;
+}
+
 /* Navigation Links */
 .sidebar-nav {
     flex: 1;
@@ -179,12 +199,23 @@
     color: white;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, opacity 0.25s ease-in-out, max-height 0.25s ease-in-out, padding-top 0.25s ease-in-out;
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    overflow: hidden;
 }
 
 .btn-logout:hover {
     background-color: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Show logout button only when sidebar is expanded */
+.sidebar-navbar:hover .btn-logout {
+    opacity: 1;
+    max-height: 40px;
+    padding-top: 8px;
 }
 
 /* Main Content Area */

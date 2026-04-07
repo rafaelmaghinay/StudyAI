@@ -21,7 +21,8 @@ export default function Sidebar() {
       <div className="sidebar-container">
         {/* Logo/Branding */}
         <div className="sidebar-brand">
-          📚 StudyAI
+          <span className="brand-icon">📚</span>
+          <span className="brand-text">StudyAI</span>
         </div>
 
         {/* Navigation Links */}
