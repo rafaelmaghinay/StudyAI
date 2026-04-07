@@ -1,4 +1,5 @@
 .header {
+    display: none; /* hidden by default (desktop/tablet) */
     background-color: var(--bg-light);
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow);
@@ -108,6 +109,10 @@
 }
 
 @media (max-width: 768px) {
+    .header {
+        display: block; /* show header only on mobile */
+    }
+
     .header-container {
         padding: 1rem;
     }
