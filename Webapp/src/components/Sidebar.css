@@ -219,91 +219,9 @@
 }
 
 /* Main Content Area */
-/* Responsive: Mobile */
-/* Responsive: Mobile - transform sidebar into a dropdown menu */
+/* Responsive: Mobile - hide sidebar completely on small screens */
 @media (max-width: 768px) {
     .sidebar-navbar {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-
-    .sidebar-container {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .sidebar-brand {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .mobile-menu-toggle {
-        display: inline-flex;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-        background-color: #ffffff;
-        color: #4f46e5;
-        border-radius: 999px;
-        border: none;
-    }
-
-    .sidebar-nav,
-    .sidebar-footer {
         display: none;
-        padding: 8px 16px 16px;
-    }
-
-    .sidebar-navbar.mobile-open .sidebar-nav,
-    .sidebar-navbar.mobile-open .sidebar-footer {
-        display: block;
-    }
-
-    .sidebar-link {
-        justify-content: flex-start;
-        padding: 10px 0;
-        border: none;
-        text-align: left;
-    }
-
-    /* On mobile, menu shows text only (no emojis/icons) */
-    .nav-icon {
-        display: none;
-    }
-
-    .nav-text {
-        opacity: 1;
-        max-width: none;
-        margin-left: 0;
-    }
-
-    /* Show user info and logout in the dropdown */
-    .user-info {
-        display: flex;
-        opacity: 1;
-        max-height: none;
-        padding-bottom: 8px;
-        margin-bottom: 8px;
-    }
-
-    .btn-logout {
-        opacity: 1;
-        max-height: none;
-        padding-top: 8px;
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .sidebar-brand {
-        padding: 10px 12px;
-    }
-
-    .sidebar-nav,
-    .sidebar-footer {
-        padding: 8px 12px 12px;
     }
 }

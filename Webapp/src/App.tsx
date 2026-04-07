@@ -19,6 +19,7 @@ import NotFoundPage from './pages/NotFoundPage'
 
 // Components
 import Sidebar from './components/Sidebar'
+import Header from './components/Header'
 import ProtectedRoute from './components/ProtectedRoute'
 import ErrorBoundary from './components/common/ErrorBoundary'
 
@@ -38,6 +39,7 @@ export default function App() {
     <ErrorBoundary>
       <div className="app">
         {isAuthenticated && <Sidebar />}
+        {isAuthenticated && <Header />}
         <main className={isAuthenticated ? 'main-content' : ''}>
           <Routes>
             {/* Public routes */}
