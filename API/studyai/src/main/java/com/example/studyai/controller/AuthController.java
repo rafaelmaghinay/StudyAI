@@ -72,7 +72,8 @@ public class AuthController {
      * Signup with email and password
      * Creates new user or returns error if email already registered
      *
-     * @param signupRequest Request containing email, password, and optional displayName
+     * @param signupRequest Request containing email, password, and optional
+     *                      displayName
      * @return Response with JWT token and new user information
      */
     @PostMapping("/signup")

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SignupRequest {
-    private String email;           // User email address
-    private String password;        // User password (will be hashed)
-    private String displayName;     // Optional user display name
+    private String email; // User email address
+    private String password; // User password (will be hashed)
+    private String displayName; // Optional user display name
 }

@@ -68,8 +68,8 @@ public class UserService {
      * Find or create user by email
      * Used for email/password authentication
      *
-     * @param email       User email
-     * @param displayName Display name (optional)
+     * @param email        User email
+     * @param displayName  Display name (optional)
      * @param passwordHash Hashed password
      * @return User object (existing or newly created)
      */

@@ -34,8 +34,8 @@ public class AuthService {
     /**
      * Register a new user with email and password
      *
-     * @param email Email address
-     * @param password Plain text password (will be hashed)
+     * @param email       Email address
+     * @param password    Plain text password (will be hashed)
      * @param displayName Display name (optional)
      * @return AuthResponse with JWT token and user info
      */
@@ -80,7 +80,7 @@ public class AuthService {
     /**
      * Authenticate user with email and password
      *
-     * @param email Email address
+     * @param email    Email address
      * @param password Plain text password
      * @return AuthResponse with JWT token and user info
      */
