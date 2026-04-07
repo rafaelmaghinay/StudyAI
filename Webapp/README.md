@@ -28,7 +28,7 @@ A modern, user-friendly React application for creating and taking interactive qu
 
 - Node.js (v16 or higher)
 - npm or yarn
-- Backend API running on `http://localhost:8080`
+- Backend API running on `http://localhost:8080` (serving REST endpoints under `/api`, e.g. `http://localhost:8080/api`)
 
 ### Installation
 
@@ -52,14 +52,15 @@ The app will open at `http://localhost:5173`
 4. **Dashboard**: Access the main hub after authentication
 5. **Logout**: Logout from the user menu in the header
 
-### Demo Mode
+### Backend Integration
 
-The app includes a **demo mode** that works without a backend:
-- Use any email and password to authenticate
-- User sessions persist in localStorage across page refreshes
-- Perfect for testing and development
+The webapp is configured to talk to a real backend API via an environment variable:
 
-To connect to a real backend, update the API endpoints in your authentication context.
+- `VITE_API_URL` – base URL for the backend API, **including** the `/api` prefix
+  - Local example: `http://localhost:8080/api`
+  - Deployed example (Railway): `https://celebrated-analysis-production.up.railway.app/api`
+
+Auth, subjects, notes, and quizzes all use this single base URL so you don't need to change code when switching between local and hosted backends.
 
 ### Building for Production
 
@@ -133,23 +134,23 @@ The webapp integrates with the StudyAI backend API:
 
 ### Backend API URL
 
-To use a different backend URL, modify the `API_BASE_URL` in `src/services/api.ts`:
+To use a different backend URL, set the `VITE_API_URL` environment variable instead of editing code.
 
-```typescript
-const API_BASE_URL = 'http://localhost:8080/api'
-```
+Examples:
+
+- Local development:
+  - `VITE_API_URL=http://localhost:8080/api`
+- Production (Railway backend):
+  - `VITE_API_URL=https://celebrated-analysis-production.up.railway.app/api`
 
 ### Authentication Endpoints
 
-Update authentication endpoints in `src/contexts/AuthContext.tsx`:
+`AuthContext` uses the same `VITE_API_URL` base and calls:
 
-```typescript
-const response = await fetch('http://localhost:8080/api/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email, password }),
-})
-```
+- `POST {VITE_API_URL}/auth/login`
+- `POST {VITE_API_URL}/auth/signup`
+
+No changes are required in the code when switching environments; updating `VITE_API_URL` is sufficient.
 
 ### Vite Configuration
 
@@ -169,7 +170,7 @@ The Vite config includes a proxy for API requests. Modify `vite.config.ts` to ad
 Create a `.env` file in the root directory:
 
 ```
-VITE_API_BASE_URL=http://localhost:8080/api
+VITE_API_URL=http://localhost:8080/api
 ```
 
 ## User Experience Features
@@ -180,6 +181,8 @@ VITE_API_BASE_URL=http://localhost:8080/api
 - **Instant Feedback**: View correct answers and explanations immediately
 - **Score Calculation**: Detailed scoring with percentage and statistics
 - **Responsive Layout**: Optimized for all screen sizes
+- **Post-creation Redirect**: After creating a quiz, you are taken to the quizzes list page.
+- **Collapsible Sidebar**: Sidebar shows icons-only when collapsed and expands on hover to reveal labels, user email, and logout button.
 
 ## Browser Support
 

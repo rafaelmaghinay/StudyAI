@@ -189,7 +189,7 @@ AWS_SECRET_ACCESS_KEY=
 
 ### Frontend (.env in Webapp/)
 ```
-VITE_API_URL=http://localhost:8080
+VITE_API_URL=http://localhost:8080/api
 ```
 
 ## Database Setup
