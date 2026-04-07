@@ -1,0 +1,88 @@
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Secrets & Credentials
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!tsconfig.node.json
+*.pem
+*.key
+credentials.yml
+secrets.yml
+
+# API Keys & Tokens
+.firebase/
+firebase-key.json
+*-firebase-adminsdk-*.json
+google-services.json
+
+# Python
+venv/
+env/
+ENV/
+.venv
+*.py[cod]
+__pycache__/
+*.so
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.eggs/
+*.egg-info/
+dist/
+build/
+
+# Spring Boot / Java
+target/
+.classpath
+.project
+.settings/
+bin/
+*.jar
+*.war
+.gradle/
+build/
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+
+# Node / React / Webapp
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+.vite/
+.parcel-cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp

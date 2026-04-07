@@ -1,0 +1,49 @@
+# FastAPI and server
+fastapi==0.104.1
+uvicorn==0.42.0
+starlette==0.27.0
+
+# Configuration and environment
+python-dotenv==1.2.2
+pydantic==1.10.14
+
+# AWS S3
+boto3==1.42.73
+botocore==1.42.73
+s3transfer==0.16.0
+
+# Google Gemini API
+google-generativeai==0.3.0
+httpx==0.23.3
+
+# File processing
+PyPDF2==3.0.1
+pdfplumber==0.11.0
+python-docx==0.8.11
+
+# Async support
+aiofiles==25.1.0
+python-multipart==0.0.22
+
+# HTTP and networking
+httpcore==0.16.3
+h11==0.14.0
+rfc3986==1.5.0
+certifi==2026.2.25
+urllib3==2.6.3
+
+# Utilities
+click==8.3.1
+colorama==0.4.6
+anyio==3.7.1
+idna==3.11
+packaging==26.0
+python-dateutil==2.9.0.post0
+six==1.17.0
+sniffio==1.3.1
+tqdm==4.67.3
+typing-inspection==0.4.2
+typing_extensions==4.15.0
+jmespath==1.1.0
+distro==1.9.0
+annotated-doc==0.0.4

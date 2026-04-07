@@ -1,0 +1,343 @@
+.create-quiz-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Stepper Styles */
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    z-index: 1;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #E5E5EA;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.step.active .step-number {
+    background: #007AFF;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+}
+
+.step-label {
+    font-size: 0.9rem;
+    color: #999;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.step.active .step-label {
+    color: #007AFF;
+    font-weight: 600;
+}
+
+.step-connector {
+    position: absolute;
+    top: 20px;
+    height: 2px;
+    background: #E5E5EA;
+    width: calc(50% - 20px);
+    transition: background 0.3s ease;
+}
+
+.step-connector:nth-of-type(1) {
+    left: 0;
+}
+
+.step-connector:nth-of-type(2) {
+    right: 0;
+}
+
+.step-connector.active {
+    background: #007AFF;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #E5E5EA;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #007AFF;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Notes Selection */
+.notes-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.note-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border: 2px solid #E5E5EA;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.note-item input[type='checkbox'] {
+    width: auto;
+    margin-top: 0.25rem;
+    cursor: pointer;
+}
+
+.note-item.selected {
+    background: #F2F8FF;
+    border-color: #007AFF;
+}
+
+.note-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.note-info h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.note-meta {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+/* Selected Notes Display */
+.selected-notes {
+    background: #F9F9F9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.selected-notes h4 {
+    margin: 0 0 1rem;
+    font-size: 0.95rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.notes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.note-tag {
+    background: #007AFF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Questions Preview */
+.questions-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.question-preview {
+    padding: 1.5rem;
+    background: #F9F9F9;
+    border-left: 4px solid #007AFF;
+    border-radius: 4px;
+}
+
+.question-preview h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.question-text {
+    margin: 0.5rem 0 1rem;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.options-list {
+    margin: 0;
+    padding-left: 1.5rem;
+    list-style: none;
+}
+
+.options-list li {
+    padding: 0.5rem 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Quiz Summary */
+.quiz-summary {
+    background: #F0F8FF;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #007AFF;
+    margin-bottom: 2rem;
+}
+
+.quiz-summary h4 {
+    margin: 0 0 1rem;
+    color: #007AFF;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+}
+
+.quiz-summary ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quiz-summary li {
+    padding: 0.5rem 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Step Subtitle */
+.step-subtitle {
+    color: #999;
+    margin-bottom: 1.5rem;
+}
+
+/* Step Actions */
+.step-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #E5E5EA;
+}
+
+.step-actions button {
+    padding: 0.75rem 1.5rem;
+}
+
+.step-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+}
+
+.empty-state p {
+    margin: 1rem 0;
+}
+
+/* Loading State */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .stepper {
+        margin-bottom: 2rem;
+    }
+
+    .step-label {
+        font-size: 0.8rem;
+    }
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .create-quiz-container {
+        padding: 1.5rem;
+    }
+
+    .create-quiz-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}

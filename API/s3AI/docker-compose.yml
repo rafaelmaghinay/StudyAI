@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: studyai-fastapi
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=True
+      - LOG_LEVEL=INFO
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_S3_BUCKET=${AWS_S3_BUCKET}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - FASTAPI_URL=http://localhost:8000
+    volumes:
+      - .:/app
+    networks:
+      - studyai-network
+    depends_on:
+      - minio  # Optional: For local S3 development
+    restart: unless-stopped
+
+  # Optional: MinIO for local S3 development
+  minio:
+    image: minio/minio:latest
+    container_name: studyai-minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - studyai-network
+    restart: unless-stopped
+
+networks:
+  studyai-network:
+    driver: bridge
+
+volumes:
+  minio_data:

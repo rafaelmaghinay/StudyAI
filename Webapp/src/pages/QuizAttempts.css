@@ -1,0 +1,263 @@
+.attempts-container {
+    width: 100%;
+}
+
+.attempts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.attempts-header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.attempts-header p {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 0.95rem;
+}
+
+.attempts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.attempt-card {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: white;
+}
+
+.attempt-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #667eea;
+}
+
+.attempt-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 2rem;
+}
+
+.attempt-info {
+    flex: 1;
+}
+
+.attempt-title {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.attempt-date {
+    margin: 0 0 0.5rem 0;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.attempt-stats {
+    margin: 0;
+    color: #5d6d7b;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.attempt-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    border: 3px solid #e1e8ed;
+    transition: all 0.3s ease;
+}
+
+.attempt-score.score-excellent {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.attempt-score.score-good {
+    background: #cce5ff;
+    border-color: #004085;
+    color: #004085;
+}
+
+.attempt-score.score-fair {
+    background: #fff3cd;
+    border-color: #856404;
+    color: #856404;
+}
+
+.attempt-score.score-poor {
+    background: #f8d7da;
+    border-color: #721c24;
+    color: #721c24;
+}
+
+.score-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.score-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+}
+
+.attempt-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #5d6d7b;
+}
+
+.attempt-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background-color: #667eea;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #5568d3;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #f0f1ff;
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+    transform: translateY(-1px);
+}
+
+.btn-danger:active {
+    transform: translateY(0);
+}
+
+/* Button sizes */
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.btn-md {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+}
+
+.btn-lg {
+    padding: 0.8rem 1.6rem;
+    font-size: 1.05rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+}
+
+.empty-state-content h2 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+}
+
+.empty-state-content p {
+    color: #7f8c8d;
+    margin: 0 0 1.5rem 0;
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+@media (max-width: 768px) {
+    .attempt-card-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .attempt-score {
+        width: 80px;
+        height: 80px;
+    }
+
+    .score-number {
+        font-size: 1.5rem;
+    }
+
+    .attempt-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .attempt-actions {
+        flex-direction: column;
+    }
+
+    .attempt-actions button {
+        width: 100%;
+    }
+}

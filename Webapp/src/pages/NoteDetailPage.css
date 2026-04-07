@@ -1,0 +1,249 @@
+.note-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.note-detail-header {
+    background: linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.note-detail-header h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.note-detail-header p {
+    margin: 0 0 1rem;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.note-detail-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+}
+
+.note-detail-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.note-detail-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.note-detail-actions button {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: #007AFF;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.note-detail-actions button:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+.note-detail-actions button.delete {
+    background: #FF3B30;
+    color: white;
+}
+
+.note-detail-actions button.delete:hover {
+    background: #E0342B;
+}
+
+.note-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.note-section {
+    background: white;
+    border: 1px solid #E5E5EA;
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.note-section h2 {
+    margin: 0 0 1.5rem;
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: 600;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #E5E5EA;
+}
+
+.note-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #666;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
+    color: #333;
+    font-size: 1rem;
+}
+
+.note-content {
+    background: #F9F9F9;
+    padding: 1.5rem;
+    border-radius: 6px;
+    line-height: 1.8;
+    color: #333;
+    font-size: 0.95rem;
+    max-height: 600px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.note-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.note-content::-webkit-scrollbar-track {
+    background: #F0F0F0;
+    border-radius: 4px;
+}
+
+.note-content::-webkit-scrollbar-thumb {
+    background: #D0D0D0;
+    border-radius: 4px;
+}
+
+.note-content::-webkit-scrollbar-thumb:hover {
+    background: #B0B0B0;
+}
+
+.related-quizzes {
+    margin-top: 1.5rem;
+}
+
+.related-quizzes h3 {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.quiz-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quiz-item {
+    padding: 1rem;
+    background: #F9F9F9;
+    border-left: 4px solid #007AFF;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quiz-item-info h4 {
+    margin: 0 0 0.25rem;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.quiz-item-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.quiz-item-action {
+    padding: 0.5rem 1rem;
+    background: #007AFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.quiz-item-action:hover {
+    background: #0056CC;
+}
+
+@media (max-width: 768px) {
+    .note-detail {
+        padding: 1rem;
+    }
+
+    .note-detail-header {
+        padding: 1.5rem;
+    }
+
+    .note-detail-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .note-detail-meta {
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+    .note-detail-actions {
+        flex-direction: column;
+    }
+
+    .note-detail-actions button {
+        width: 100%;
+    }
+
+    .note-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .note-content {
+        max-height: 400px;
+    }
+
+    .quiz-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .quiz-item-action {
+        width: 100%;
+        text-align: center;
+    }
+}
