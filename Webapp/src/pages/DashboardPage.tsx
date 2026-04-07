@@ -58,9 +58,8 @@ export default function DashboardPage() {
         <div>
           <h1>Welcome back, {user?.displayName || 'Learner'}! 👋</h1>
           <p>You have {stats.totalQuizzes} quizzes to explore</p>
-        </div>
-        <Button onClick={() => navigate('/subjects')}>
-          ➕ Create New Subject
+        <div>
+          <h1>Welcome back, {user?.name || 'Learner'}! 👋</h1>
         </Button>
       </section>
 
