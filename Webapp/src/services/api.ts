@@ -3,6 +3,7 @@ import axios from 'axios'
 // Access Vite env in a type-safe way even if vite/client types aren't loaded
 const apiEnv = (import.meta as any).env || {}
 const API_BASE_URL = apiEnv.VITE_API_URL || 'http://localhost:8080/api'
+console.log('API_BASE_URL (frontend):', API_BASE_URL)
 
 const api = axios.create({
   baseURL: API_BASE_URL,
