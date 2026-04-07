@@ -7,7 +7,6 @@ import { quizService } from '../services/quizService'
 import { Note, Question, Subject } from '../types'
 import Button from '../components/common/Button'
 import Input from '../components/common/Input'
-import Modal from '../components/common/Modal'
 import Card from '../components/common/Card'
 import './CreateQuiz.css'
 
@@ -196,7 +195,8 @@ export default function CreateQuizPage() {
                   <div className="note-info">
                     <h4>{note.title}</h4>
                     <p className="note-meta">
-                      {note.numberOfPages} pages • {note.uploadedAt}
+                      {note.fileType ? `${note.fileType.toUpperCase()} • ` : ''}
+                      {note.createdAt}
                     </p>
                   </div>
                 </div>
@@ -346,17 +346,17 @@ export default function CreateQuizPage() {
               generatedQuestions.map((question, index) => (
                 <div key={question.id} className="question-preview">
                   <h4>
-                    Question {index + 1} ({question.type})
+                    Question {index + 1} ({question.questionType})
                   </h4>
-                  <p className="question-text">{question.text}</p>
-                  {question.type === 'multiple_choice' && (
+                  <p className="question-text">{question.questionText}</p>
+                  {question.questionType === 'multiple_choice' && (
                     <ul className="options-list">
                       {(question.options || []).map((option, i) => (
                         <li key={i}>{String.fromCharCode(65 + i)}) {option}</li>
                       ))}
                     </ul>
                   )}
-                  {question.type === 'true_false' && (
+                  {question.questionType === 'true_false' && (
                     <ul className="options-list">
                       <li>A) True</li>
                       <li>B) False</li>
