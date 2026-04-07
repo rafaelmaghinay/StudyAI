@@ -18,7 +18,6 @@ export default function QuizPage() {
   const [answers, setAnswers] = useState<UserAnswer[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [timeStarted, setTimeStarted] = useState<Date | null>(null)
   const [timerSeconds, setTimerSeconds] = useState(0)
   const [attemptId, setAttemptId] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -59,7 +58,6 @@ export default function QuizPage() {
     try {
       const attempt = await quizService.startAttempt(quizId)
       setAttemptId(attempt.id)
-      setTimeStarted(new Date())
     } catch (err) {
       console.error('Failed to start attempt:', err)
     }
@@ -83,7 +81,7 @@ export default function QuizPage() {
   }
 
   const handleNext = () => {
-    if (quiz && currentQuestionIndex < quiz.questions.length - 1) {
+    if (quiz && quiz.questions && currentQuestionIndex < quiz.questions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1)
     }
   }
