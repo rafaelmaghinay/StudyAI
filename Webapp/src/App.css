@@ -4,11 +4,18 @@
 }
 
 .main-content {
-    margin-left: 250px;
+    margin-left: 72px;
+    /* match collapsed sidebar width */
     min-height: 100vh;
     background-color: #f8f9fa;
     padding: 2rem;
     max-width: 100%;
+    transition: margin-left 0.2s ease;
+}
+
+/* When sidebar is expanded on hover, shift content so it is never covered */
+nav.sidebar-navbar:hover+.main-content {
+    margin-left: 250px;
 }
 
 .loading-container {
@@ -42,6 +49,7 @@
 
 @media (max-width: 768px) {
     .main-content {
+        margin-left: 0;
         padding: 1rem;
     }
 }
