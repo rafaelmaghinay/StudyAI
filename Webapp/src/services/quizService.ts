@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { Quiz, QuizAttempt, UserAnswer, ApiResponse, Question } from '../types'
 
-const API_BASE_URL = 'http://localhost:8080/api'
+// Use Vite env var for API base, fallback to localhost for dev
+const quizEnv = (import.meta as any).env || {}
+const API_BASE_URL = quizEnv.VITE_API_URL || 'http://localhost:8080/api'
 
 const api = axios.create({
   baseURL: API_BASE_URL,

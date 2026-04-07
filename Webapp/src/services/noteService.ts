@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { Note, ApiResponse } from '../types'
 
-const API_BASE_URL = 'http://localhost:8080/api'
+// Use Vite env var for API base, fallback to localhost for dev
+const noteEnv = (import.meta as any).env || {}
+const API_BASE_URL = noteEnv.VITE_API_URL || 'http://localhost:8080/api'
 
 const api = axios.create({
   baseURL: API_BASE_URL,

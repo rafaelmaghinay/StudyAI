@@ -1,5 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 
+// Access Vite env safely (works in dev and build)
+const authEnv = (import.meta as any).env || {}
+const AUTH_API_BASE_URL = authEnv.VITE_API_URL || 'http://localhost:8080/api'
+
 interface User {
   id: string
   email: string
@@ -39,7 +43,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       setIsLoading(true)
       
-      const response = await fetch('http://localhost:8080/api/auth/login', {
+      const response = await fetch(`${AUTH_API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -92,7 +96,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       setIsLoading(true)
 
-      const response = await fetch('http://localhost:8080/api/auth/signup', {
+      const response = await fetch(`${AUTH_API_BASE_URL}/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, displayName: name }),
