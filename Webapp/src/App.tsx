@@ -1,3 +1,6 @@
+// Top-level application shell and route configuration for StudyAI.
+// Controls layout (sidebar/header) and public vs protected routes.
+
 import './App.css'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './contexts/AuthContext'

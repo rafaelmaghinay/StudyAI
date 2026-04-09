@@ -24,6 +24,13 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ * Domain service for quiz lifecycle management.
+ * <p>
+ * Coordinates persistence, subject linkage, and delegation to the FastAPI
+ * service for question generation, exposing methods consumed by REST
+ * controllers.
+ */
 @Service
 public class QuizService {
 
@@ -44,6 +51,14 @@ public class QuizService {
     @Autowired
     private QuestionService questionService;
 
+    /**
+     * Create a basic quiz without automatically generating questions.
+     *
+     * @param user  owner of the quiz
+     * @param title quiz title
+     * @param notes notes associated with this quiz (may be empty)
+     * @return persisted quiz entity
+     */
     @Transactional
     public Quiz createQuiz(User user, String title, List<Note> notes) {
         logger.debug("Creating quiz - user: {}, title: {}, notes count: {}", user.getId(), title, notes.size());
@@ -73,6 +88,22 @@ public class QuizService {
         }
     }
 
+    /**
+     * Create a quiz and, if requested, generate questions via the FastAPI
+     * document-processing service.
+     *
+     * @param user          owner of the quiz
+     * @param title         quiz title
+     * @param description   optional description shown in the UI
+     * @param difficulty    difficulty label used by the frontend
+     * @param questionCount number of questions to generate
+     * @param notes         source notes used to generate questions
+     * @param subjectId     optional subject identifier to link the quiz
+     * @return fully initialized quiz with questions persisted when generation
+     *         succeeds
+     * @throws QuizGenerationException when the external generator fails, causing
+     *                                 a full transaction rollback
+     */
     @Transactional(rollbackFor = { QuizGenerationException.class, Exception.class }, timeout = 150)
     public Quiz createQuizWithQuestions(User user, String title, String description, String difficulty,
             int questionCount, List<Note> notes, UUID subjectId) {
@@ -170,12 +201,26 @@ public class QuizService {
         return quizRepository.findByUserId(userId);
     }
 
+    /**
+     * Fetch all quizzes for a user and convert them to DTOs within a
+     * transaction.
+     *
+     * @param userId owner identifier
+     * @return list of quiz DTOs
+     */
     @Transactional(readOnly = true)
     public List<QuizDTO> getUserQuizzesDTO(UUID userId) {
         // Convert within the transaction to avoid LazyInitializationException
         return convertToDTOList(quizRepository.findByUserId(userId));
     }
 
+    /**
+     * Fetch a single quiz and convert it to a DTO, ensuring lazily loaded
+     * relationships are initialized.
+     *
+     * @param id quiz identifier
+     * @return quiz DTO or {@code null} if not found
+     */
     @Transactional(readOnly = true)
     public QuizDTO getQuizByIdDTO(UUID id) {
         // Convert within the transaction to avoid LazyInitializationException
@@ -191,6 +236,13 @@ public class QuizService {
         return null;
     }
 
+    /**
+     * Update basic quiz metadata such as the title.
+     *
+     * @param id    quiz identifier
+     * @param title new quiz title
+     * @return updated quiz entity
+     */
     public Quiz updateQuiz(UUID id, String title) {
         Optional<Quiz> quiz = quizRepository.findById(id);
         if (quiz.isPresent()) {
@@ -201,10 +253,22 @@ public class QuizService {
         throw new RuntimeException("Quiz not found");
     }
 
+    /**
+     * Delete a quiz by identifier.
+     *
+     * @param id quiz identifier
+     */
     public void deleteQuiz(UUID id) {
         quizRepository.deleteById(id);
     }
 
+    /**
+     * Map a Quiz entity and its relationships to a QuizDTO suitable for
+     * serialization.
+     *
+     * @param quiz quiz entity to convert
+     * @return DTO representation of the quiz
+     */
     public QuizDTO convertToDTO(Quiz quiz) {
         // Ensure notes are loaded within transaction
         List<UUID> noteIds = new ArrayList<>();
@@ -236,6 +300,12 @@ public class QuizService {
                 quiz.getUpdatedAt());
     }
 
+    /**
+     * Convenience method to convert a collection of quizzes to DTOs.
+     *
+     * @param quizzes quiz entities
+     * @return list of DTOs
+     */
     public List<QuizDTO> convertToDTOList(List<Quiz> quizzes) {
         return quizzes.stream().map(this::convertToDTO).collect(Collectors.toList());
     }

@@ -1,3 +1,6 @@
+// Shared Axios instance and low-level API helpers for the StudyAI frontend.
+// Central place to attach auth headers and handle cross-cutting HTTP concerns.
+
 import axios from 'axios'
 
 // Access Vite env in a type-safe way even if vite/client types aren't loaded

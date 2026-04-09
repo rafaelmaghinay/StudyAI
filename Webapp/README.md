@@ -222,8 +222,8 @@ VITE_API_URL=http://localhost:8080/api
 
 ## License
 
-This project is part of the StudyAI suite.
+All rights reserved. This web application is part of a personal/portfolio project and is not licensed for redistribution or commercial use without explicit permission.
 
 ## Support
 
-For issues or questions, please refer to the main StudyAI documentation.
+For issues or questions, please contact the project author directly.

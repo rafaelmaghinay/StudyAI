@@ -14,7 +14,13 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+
 class DocumentProcessor:
+    """Utility class for validating and extracting text and metadata.
+
+    Encapsulates low-level PDF/DOCX handling so that routers and higher-level
+    services can work with plain strings and simple metadata dictionaries.
+    """
 
     @staticmethod
     async def extract_text_from_pdf(file_path: str) -> str:

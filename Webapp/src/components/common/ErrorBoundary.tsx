@@ -1,3 +1,6 @@
+// Generic error boundary for catching unexpected render errors in the UI.
+// Prevents the whole app from crashing and shows a simple fallback.
+
 import React from 'react'
 
 interface ErrorBoundaryProps {

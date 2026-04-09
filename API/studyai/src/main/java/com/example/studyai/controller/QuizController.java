@@ -23,6 +23,13 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ * REST controller for quiz management endpoints.
+ * <p>
+ * Exposes operations to create quizzes from user notes (via FastAPI),
+ * retrieve quizzes and their questions, and update or delete existing
+ * quizzes for a given user.
+ */
 @RestController
 @RequestMapping("/api/quizzes")
 public class QuizController {
@@ -41,6 +48,13 @@ public class QuizController {
     @Autowired
     private NoteRepository noteRepository;
 
+    /**
+     * Create a new quiz and (optionally) generate questions from notes.
+     *
+     * @param request JSON body containing userId, title, noteIds, difficulty,
+     *                questionCount and optional subjectId/description
+     * @return API response wrapping the created quiz DTO or an error message
+     */
     @PostMapping
     public ResponseEntity<?> createQuiz(@RequestBody Map<String, Object> request) {
         try {
@@ -146,6 +160,13 @@ public class QuizController {
     }
 
     // IMPORTANT: Put /user/{userId} BEFORE /{id} to avoid path variable conflict
+
+    /**
+     * Fetch all quizzes that belong to a specific user.
+     *
+     * @param userId user identifier as a UUID string
+     * @return list of quiz DTOs owned by the user
+     */
     @GetMapping("/user/{userId}")
     public ResponseEntity<?> getUserQuizzes(@PathVariable String userId) {
         try {
@@ -158,6 +179,12 @@ public class QuizController {
         }
     }
 
+    /**
+     * Retrieve all questions for a given quiz.
+     *
+     * @param id quiz identifier as a UUID string
+     * @return API response containing question DTOs
+     */
     @GetMapping("/{id}/questions")
     public ResponseEntity<?> getQuizQuestions(@PathVariable String id) {
         try {
@@ -174,6 +201,12 @@ public class QuizController {
         }
     }
 
+    /**
+     * Get a single quiz by its identifier.
+     *
+     * @param id quiz identifier as a UUID string
+     * @return API response with the quiz DTO or 404 if not found
+     */
     @GetMapping("/{id}")
     public ResponseEntity<?> getQuiz(@PathVariable String id) {
         try {
@@ -189,6 +222,13 @@ public class QuizController {
         }
     }
 
+    /**
+     * Update quiz metadata such as the title.
+     *
+     * @param id      quiz identifier as a UUID string
+     * @param request request body containing the new title
+     * @return API response with the updated quiz DTO
+     */
     @PutMapping("/{id}")
     public ResponseEntity<?> updateQuiz(@PathVariable String id, @RequestBody Map<String, String> request) {
         try {
@@ -203,6 +243,12 @@ public class QuizController {
         }
     }
 
+    /**
+     * Delete a quiz permanently.
+     *
+     * @param id quiz identifier as a UUID string
+     * @return 204 No Content on success or 400 on invalid ID format
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteQuiz(@PathVariable String id) {
         try {

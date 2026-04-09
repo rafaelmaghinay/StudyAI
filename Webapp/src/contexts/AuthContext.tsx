@@ -1,3 +1,6 @@
+// Authentication context for the StudyAI frontend.
+// Centralizes login/signup/logout flows and exposes user state to the app.
+
 import React, { createContext, useContext, useState, useEffect } from 'react'
 
 // Access Vite env safely (works in dev and build)

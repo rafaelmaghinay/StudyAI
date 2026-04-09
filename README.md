@@ -131,9 +131,10 @@ The FastAPI service runs on `http://localhost:8000`
 ## API Endpoints
 
 ### Authentication
-- `POST /api/auth/register` - Register new user
+// Implemented in the Spring Boot AuthController
+- `POST /api/auth/signup` - Register new user
 - `POST /api/auth/login` - Login user
-- `POST /api/auth/refresh` - Refresh JWT token
+- `POST /api/auth/verify` - Verify an existing JWT token
 
 ### Quizzes
 - `GET /api/quizzes/user/{userId}` - Get user's quizzes
@@ -254,8 +255,8 @@ gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker
 
 ## License
 
-This project is licensed under the MIT License - see LICENSE file for details.
+All rights reserved. This project is for personal/portfolio use and is not licensed for redistribution or commercial use without explicit permission.
 
 ## Support
 
-For issues and questions, please open an GitHub issue.
+For issues and questions, please contact the project author directly.

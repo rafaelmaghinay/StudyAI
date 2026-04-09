@@ -1,3 +1,11 @@
+"""StudyAI FastAPI microservice.
+
+This service is responsible for document ingestion, text extraction, and
+AI-powered quiz generation. It is called from the Spring Boot backend and
+exposes a small set of HTTP endpoints that focus purely on document and
+quiz-related tasks.
+"""
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse

@@ -16,7 +16,14 @@ def get_grok_service():
         grok_service = GrokService()
     return grok_service
 
+
 class GeminiService:
+    """Facade for Google Gemini-based quiz generation with Grok fallback.
+
+    Handles lazy client initialization, prompt construction, response parsing,
+    and graceful degradation to the GrokService when Gemini is unavailable or
+    rate-limited.
+    """
     def __init__(self):
         self.client = None
         self.model = settings.quiz_generation_model

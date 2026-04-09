@@ -1,3 +1,6 @@
+// Route guard component that redirects unauthenticated users to the login page.
+// Wrap any route element that should only be visible to signed-in users.
+
 import { ReactNode } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'

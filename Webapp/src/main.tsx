@@ -1,3 +1,6 @@
+// Application bootstrap for the StudyAI React frontend.
+// Wires up routing, global auth context, and mounts the root component.
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
