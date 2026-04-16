@@ -25,7 +25,7 @@ api.interceptors.request.use((config) => {
 export const subjectService = {
   getAll: async (userId: string) => {
     try {
-      const response = await api.get<ApiResponse<Subject[]>>(`/subjects/user/${userId}`)
+      const response = await api.get<ApiResponse<Subject[]>>(`/subjects/users/${userId}`)
       const subjects = response.data?.data
       
       // Ensure we always return an array
