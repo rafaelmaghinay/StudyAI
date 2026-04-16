@@ -101,7 +101,7 @@ public class QuizAttemptController {
 
     // IMPORTANT: Put /user/{userId} and /quiz/{quizId} BEFORE /{id} to avoid path
     // variable conflict
-    @GetMapping("/user/{userId}")
+    @GetMapping("/users/{userId}")
     public ResponseEntity<?> getUserAttempts(@PathVariable String userId) {
         try {
             logger.debug("Fetching quiz attempts for user: {}", userId);
@@ -120,7 +120,7 @@ public class QuizAttemptController {
         }
     }
 
-    @GetMapping("/quiz/{quizId}")
+    @GetMapping("/quizzes/{quizId}")
     public ResponseEntity<?> getQuizAttempts(@PathVariable String quizId) {
         try {
             UUID quizUuid = UUID.fromString(quizId);

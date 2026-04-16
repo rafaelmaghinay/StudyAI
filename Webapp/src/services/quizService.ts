@@ -24,7 +24,7 @@ api.interceptors.request.use((config) => {
 // Quiz API calls
 export const quizService = {
   getAll: async (userId: string) => {
-    const response = await api.get<ApiResponse<Quiz[]>>(`/quizzes/user/${userId}`)
+    const response = await api.get<ApiResponse<Quiz[]>>(`/quizzes/users/${userId}`)
     return response.data.data
   },
 
@@ -63,7 +63,7 @@ export const quizService = {
   },
 
   getAttempts: async (userId: string) => {
-    const response = await api.get<ApiResponse<QuizAttempt[]>>(`/quiz-attempts/user/${userId}`)
+    const response = await api.get<ApiResponse<QuizAttempt[]>>(`/quiz-attempts/users/${userId}`)
     return response.data.data
   },
 

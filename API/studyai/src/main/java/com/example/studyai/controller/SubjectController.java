@@ -84,7 +84,7 @@ public class SubjectController {
     }
 
     // IMPORTANT: Put /user/{userId} BEFORE /{id} to avoid path variable conflict
-    @GetMapping("/user/{userId}")
+    @GetMapping("/users/{userId}")
     public ResponseEntity<?> getUserSubjects(@PathVariable String userId) {
         try {
             logger.info("Attempting to fetch subjects for userId: {}", userId);

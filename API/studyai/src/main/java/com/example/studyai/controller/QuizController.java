@@ -167,7 +167,7 @@ public class QuizController {
      * @param userId user identifier as a UUID string
      * @return list of quiz DTOs owned by the user
      */
-    @GetMapping("/user/{userId}")
+    @GetMapping("/users/{userId}")
     public ResponseEntity<?> getUserQuizzes(@PathVariable String userId) {
         try {
             UUID userUuid = UUID.fromString(userId);

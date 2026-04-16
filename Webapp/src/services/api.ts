@@ -96,7 +96,7 @@ interface ApiResponse<T> {
 
 // Subjects API
 export const getSubjects = async (userId: string) => {
-  const response = await api.get<ApiResponse<Subject[]>>(`/subjects/user/${userId}`)
+  const response = await api.get<ApiResponse<Subject[]>>(`/subjects/users/${userId}`)
   return response.data.data
 }
 
@@ -113,7 +113,7 @@ export const getQuiz = async (id: string) => {
 
 export const getQuizzes = async (userId?: string) => {
   if (userId) {
-    const response = await api.get<ApiResponse<Quiz[]>>(`/quizzes/user/${userId}`)
+    const response = await api.get<ApiResponse<Quiz[]>>(`/quizzes/users/${userId}`)
     return response.data.data
   }
   const response = await api.get<ApiResponse<Quiz[]>>('/quizzes')
@@ -127,6 +127,6 @@ export const deleteQuiz = async (id: string) => {
 
 // Quiz Attempts API
 export const getUserQuizAttempts = async (userId: string) => {
-  const response = await api.get<ApiResponse<QuizAttempt[]>>(`/quiz-attempts/user/${userId}`)
+  const response = await api.get<ApiResponse<QuizAttempt[]>>(`/quiz-attempts/users/${userId}`)
   return response.data.data
 }

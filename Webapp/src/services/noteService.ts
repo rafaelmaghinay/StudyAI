@@ -30,12 +30,12 @@ api.interceptors.request.use((config) => {
 // Note API calls
 export const noteService = {
   getBySubject: async (subjectId: string) => {
-    const response = await api.get<ApiResponse<Note[]>>(`/notes/subject/${subjectId}`)
+    const response = await api.get<ApiResponse<Note[]>>(`/notes/subjects/${subjectId}`)
     return response.data.data
   },
 
   getByUser: async (userId: string) => {
-    const response = await api.get<ApiResponse<Note[]>>(`/notes/user/${userId}`)
+    const response = await api.get<ApiResponse<Note[]>>(`/notes/users/${userId}`)
     return response.data.data
   },
 

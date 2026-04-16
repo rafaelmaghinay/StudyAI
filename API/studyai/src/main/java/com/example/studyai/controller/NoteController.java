@@ -64,7 +64,7 @@ public class NoteController {
 
     // IMPORTANT: Put /subject/{subjectId} and /user/{userId} BEFORE /{id} to avoid
     // path variable conflict
-    @GetMapping("/subject/{subjectId}")
+    @GetMapping("/subjects/{subjectId}")
     public ResponseEntity<?> getSubjectNotes(@PathVariable String subjectId) {
         try {
             UUID subjectUuid = UUID.fromString(subjectId);
@@ -77,7 +77,7 @@ public class NoteController {
         }
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/users/{userId}")
     public ResponseEntity<?> getUserNotes(@PathVariable String userId) {
         try {
             UUID userUuid = UUID.fromString(userId);
